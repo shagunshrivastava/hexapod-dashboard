@@ -19,6 +19,7 @@ export default function Header({
   onToggleSidebar,
   sidebarOpen,
   onOpenSettings,
+  isOnline = true,
 }) {
   const { theme, toggleTheme, isDark } = useTheme();
   const [time, setTime] = useState(new Date());
@@ -55,7 +56,7 @@ export default function Header({
       case 'emergency_alerts':
         return 'Emergency Alerts';
       case 'rover_health':
-        return 'Rover Health & Diagnostics';
+        return 'Hexapod Health & Diagnostics';
       case 'logs_history':
         return 'Logs & Mission History';
       default:
@@ -86,13 +87,25 @@ export default function Header({
 
       {/* Right: Telemetry Status, Clock, Theme Switcher & Settings */}
       <div className="flex items-center gap-2.5 sm:gap-3.5">
-        {/* Rover Status Badge */}
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono-hud font-bold shadow-xs">
+        {/* Hexapod Status Badge */}
+        <div
+          className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-hud font-bold shadow-xs border ${
+            isOnline
+              ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+              : 'bg-rose-50 text-rose-700 border-rose-200'
+          }`}
+        >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            {isOnline ? (
+              <>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </>
+            ) : (
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+            )}
           </span>
-          <span>ROVER : ONLINE</span>
+          <span>{isOnline ? 'Hexapod:Online' : 'Hexapod:Offline'}</span>
         </div>
 
         {/* Real-time Clock */}

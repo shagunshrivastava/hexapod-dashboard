@@ -9,7 +9,6 @@ import {
   HeartPulse,
   FileText,
   OctagonAlert,
-  Shield,
   ChevronLeft,
   ChevronRight,
   Sparkles,
@@ -28,7 +27,7 @@ export default function Sidebar({
     { id: '3d_mapping', name: '3D Mapping & SLAM', icon: Globe, highlight: true },
     { id: 'blast_prediction', name: 'Blast Prediction', icon: Flame },
     { id: 'emergency_alerts', name: 'Emergency Alerts', icon: AlertTriangle, badge: '2' },
-    { id: 'rover_health', name: 'Rover Health', icon: HeartPulse },
+    { id: 'rover_health', name: 'Hexapod Health', icon: HeartPulse },
     { id: 'logs_history', name: 'Logs & History', icon: FileText },
   ];
 
@@ -39,30 +38,19 @@ export default function Sidebar({
       }`}
     >
       <div>
-        {/* Logo & Avatar Hero */}
-        <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100">
-          <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="relative p-2 rounded-2xl bg-gradient-to-tr from-blue-600 via-sky-500 to-cyan-400 text-white shadow-md shadow-blue-500/25 shrink-0">
-              <Shield className="w-5 h-5" />
-              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white" />
+        {/* Branding & Sidebar Collapse Toggle */}
+        <div
+          className={`flex items-center ${
+            isCollapsed ? 'justify-center' : 'justify-between'
+          } pb-3.5 mb-3.5 border-b border-slate-100`}
+        >
+          {!isCollapsed && (
+            <div className="min-w-0 transition-opacity duration-200 px-1">
+              <h1 className="font-extrabold text-base tracking-wider font-tech text-slate-900 leading-tight truncate">
+                Hexapod
+              </h1>
             </div>
-
-            {!isCollapsed && (
-              <div className="min-w-0 transition-opacity duration-200">
-                <div className="flex items-center gap-1.5">
-                  <h1 className="font-extrabold text-sm tracking-wider font-tech text-slate-900 uppercase leading-tight truncate">
-                    ELYSIA
-                  </h1>
-                  <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-sky-50 text-blue-700 border border-blue-200">
-                    MK-IV
-                  </span>
-                </div>
-                <p className="text-[10px] font-bold text-blue-600 tracking-wider font-tech uppercase truncate">
-                  MINE ROVER AI • SLAM
-                </p>
-              </div>
-            )}
-          </div>
+          )}
 
           {/* Sidebar Collapse Toggle Button */}
           <button

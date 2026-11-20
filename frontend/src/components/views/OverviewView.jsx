@@ -83,9 +83,9 @@ export default function OverviewView({ onNavigateToMapping }) {
               <PageViewNotificationBell pageId="overview" pageTitle="Subterranean Mission" />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-tech tracking-wide text-slate-900 leading-tight uppercase max-w-xl">
-              FOCUS CREATES CLARITY.<br />
-              <span className="text-blue-600">CLARITY CREATES IMPACT.</span>
+            <h2 className="text-xl sm:text-2xl font-extrabold font-tech text-slate-900 leading-tight uppercase max-w-2xl">
+              WHERE WHEELS FAIL, SIX LEGS PREVAIL<br />
+              <span className="text-blue-600 sm:whitespace-nowrap">AUTONOMOUS SUBSURFACE RECONNAISSANCE</span>
             </h2>
             <p className="text-xs text-slate-600 max-w-lg mt-2 leading-relaxed font-sans">
               Autonomous subterranean exploration, 3D LiDAR point cloud SLAM acquisition, and atmospheric gas hazard inspection active.
